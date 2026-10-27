@@ -1,0 +1,11 @@
+src/**
+test/**
+node_modules/**
+.github/**
+.gitignore
+tsconfig.json
+esbuild.mjs
+package-lock.json
+*.vsix
+.codex/**
+dist/workbook.js

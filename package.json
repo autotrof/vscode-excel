@@ -1,0 +1,57 @@
+{
+  "name": "vscode-excel",
+  "displayName": "Excel Viewer",
+  "description": "Read .xls and .xlsx spreadsheets in VS Code",
+  "version": "0.1.0",
+  "publisher": "autotrof",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/autotrof/vscode-excel.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCustomEditor:excelViewer.viewer"
+  ],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "excelViewer.viewer",
+        "displayName": "Excel Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.xls"
+          },
+          {
+            "filenamePattern": "*.xlsx"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "check": "tsc --noEmit",
+    "test": "npm run build && node --test test/*.test.cjs",
+    "package": "npm run check && npm test && vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/vscode": "1.85.0",
+    "@vscode/vsce": "^4.0.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}
